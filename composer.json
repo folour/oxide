@@ -1,0 +1,22 @@
+{
+  "name": "folour/oxide",
+  "description": "Simple and lightweight cURL-based HTTP client for PHP 7.1",
+  "keywords": ["http", "http client", "curl", "curl wrapper", "curl client"],
+  "minimum-stability": "dev",
+  "license": "GPLv3",
+  "authors": [
+    {
+      "name": "Vadim Bova",
+      "email": "folour@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Folour\\Oxide\\": "src/Folour/Oxide"
+    }
+  }
+}
