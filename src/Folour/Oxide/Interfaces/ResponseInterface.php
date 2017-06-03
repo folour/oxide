@@ -14,5 +14,37 @@ namespace Folour\Oxide\Interfaces;
  */
 interface ResponseInterface
 {
+    /**
+     * @param string $response
+     * @param array $info
+     */
+    public function __construct(string $response, array $info);
 
+    /**
+     * Returns response headers as array
+     *
+     * @return array
+     */
+    public function headers(): array;
+
+    /**
+     * Returns response body
+     *
+     * @return string
+     */
+    public function body(): string;
+
+    /**
+     * Returns HTTP response code
+     *
+     * @return int
+     */
+    public function code(): int;
+
+    /**
+     * Returns response body
+     *
+     * @return string
+     */
+    public function __toString(): string;
 }

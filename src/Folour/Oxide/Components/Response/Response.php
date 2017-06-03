@@ -28,10 +28,7 @@ class Response implements ResponseInterface
     private $body;
 
     /**
-     * Response constructor
-     *
-     * @param string $response
-     * @param array $info
+     * @inheritdoc
      */
     public function __construct(string $response, array $info)
     {
@@ -41,9 +38,7 @@ class Response implements ResponseInterface
     }
 
     /**
-     * Returns response headers as array
-     *
-     * @return array
+     * @inheritdoc
      */
     public function headers(): array
     {
@@ -51,9 +46,7 @@ class Response implements ResponseInterface
     }
 
     /**
-     * Returns response body
-     *
-     * @return string
+     * @inheritdoc
      */
     public function body(): string
     {
@@ -61,13 +54,19 @@ class Response implements ResponseInterface
     }
 
     /**
-     * Returns HTTP response code
-     *
-     * @return int
+     * @inheritdoc
      */
     public function code(): int
     {
         return $this->code;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function __toString(): string
+    {
+        return $this->body();
     }
 
     /**
