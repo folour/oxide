@@ -2,7 +2,7 @@
   "name": "folour/oxide",
   "description": "Simple and lightweight cURL-based HTTP client for PHP 7.1",
   "keywords": ["http", "http client", "curl", "curl wrapper", "curl client"],
-  "minimum-stability": "dev",
+  "minimum-stability": "beta",
   "license": "GPLv3",
   "authors": [
     {
