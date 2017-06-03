@@ -21,7 +21,7 @@ Oxide requires PHP 7.1 and php-curl extension
     var_dump($response->headers());
 ```
 
-###Configure
+### Configure
 ```php
     <?php declare(strict_types=1);
     
