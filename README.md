@@ -1,8 +1,10 @@
 # Oxide
 Simple and lightweight cURL-based HTTP client for PHP 7.1
-###Requirements
+
+### Requirements
 Oxide requires PHP 7.1 and php-curl extension
-###Basic usage
+
+### Basic usage
 ```php
     <?php declare(strict_types=1);
     
@@ -18,6 +20,7 @@ Oxide requires PHP 7.1 and php-curl extension
     //get response headers
     var_dump($response->headers());
 ```
+
 ###Configure
 ```php
     <?php declare(strict_types=1);
@@ -36,7 +39,8 @@ Oxide requires PHP 7.1 and php-curl extension
     
     $response = $oxide->post('http://httpbin.org/post', ['test']);
 ```
-###More HTTP request methods
+
+### More HTTP request methods
 ```php
     <?php declare(strict_types=1);
     
