@@ -90,7 +90,7 @@ abstract class Configurator
      * @param array $options
      * @return self
      */
-    public function setOptions(array $options): self
+    protected function setOptions(array $options): self
     {
         $this->options = array_replace($this->options, $options);
 
