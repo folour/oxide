@@ -1,4 +1,8 @@
 # Oxide
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/folour/oxide/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/folour/oxide/?branch=master)
+[![downloads](https://poser.pugx.org/folour/oxide/downloads.png)](https://packagist.org/packages/folour/oxide)
+[![license](https://poser.pugx.org/folour/oxide/license.png)](https://packagist.org/packages/folour/oxide)
+
 Simple and lightweight cURL-based HTTP client for PHP 7.1
 
 ### Requirements
