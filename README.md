@@ -4,6 +4,11 @@ Simple and lightweight cURL-based HTTP client for PHP 7.1
 ### Requirements
 Oxide requires PHP 7.1 and php-curl extension
 
+### Installation
+```
+    composer require folour/oxide 'v1.0.0-beta'
+```
+
 ### Basic usage
 ```php
     <?php declare(strict_types=1);
