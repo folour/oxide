@@ -5,7 +5,7 @@
  * @link    https://bova.io
  */
 
-namespace Folour\Oxide;
+namespace Folour\Oxide\Components;
 
 /**
  * Abstract configuration class for Oxide client
