@@ -7,9 +7,10 @@
 
 namespace Folour\Oxide\Components\Request;
 
-use Folour\Oxide\Components\Response\Response;
+use Folour\Oxide\Exceptions\Exception;
 use Folour\Oxide\Interfaces\RequestInterface;
 use Folour\Oxide\Interfaces\ResponseInterface;
+use Folour\Oxide\Components\Response\Response;
 
 /**
  * @inheritdoc
@@ -37,17 +38,29 @@ class Request implements RequestInterface
      * @param string $url
      * @param array|null $data
      * @return ResponseInterface
+     * @throws Exception
      */
     public final function send(string $url, array $data = null): ResponseInterface
     {
-        if($data) {
+        if($data !== null) {
             $data = $data ? http_build_query($data, '', '&') : null;
         }
         $options = $this->prepare($url, $data);
-        var_dump($options);
-        //$handle  = curl_init();
+        $handle  = curl_init();
 
-        return new Response;
+        curl_setopt_array($handle, $options);
+
+        $response   = curl_exec($handle);
+        $error      = curl_error($handle);
+        $info       = curl_getinfo($handle);
+
+        curl_close($handle);
+
+        if($error !== '') {
+            throw new Exception('Request failed with error: "'.$error.'"');
+        }
+
+        return new Response($response, $info);
     }
 
     /**

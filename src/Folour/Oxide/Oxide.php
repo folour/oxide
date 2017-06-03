@@ -108,56 +108,6 @@ class Oxide extends Configurator
     }
 
     /**
-     * Download file via cURL
-     *
-     * @param string $url
-     * @param string $path
-     * @return string|null
-     * @throws \RuntimeException
-     */
-//    public function download(string $url, string $path): ?string
-//    {
-//        if(!($file = fopen($path, 'a+b'))) {
-//            throw new \RuntimeException('Unable to create file resource');
-//        }
-//
-//        $this->setOptions([
-//            CURLOPT_RETURNTRANSFER  => false,
-//            CURLOPT_FILE            => $file,
-//            CURLOPT_URL             => $url
-//        ]);
-//
-//        $result = $this->execute();
-//        fclose($file);
-//
-//        return $result;
-//    }
-
-    /**
-     * Execute request
-     *
-     * @param array $request_options
-     * @return string|null
-     * @throws Exception
-     */
-    private function execute(array $request_options): ?string
-    {
-        $handle     = curl_init();
-        $options    = array_replace(self::DEFAULT_OPTIONS, $this->getOptions(), $request_options);
-        curl_setopt_array($handle, $options);
-
-        $result = curl_exec($handle);
-        $error = curl_error($handle);
-        curl_close($handle);
-
-        if($error != '') {
-            throw new Exception('cURL execution failed with error: "'.$error.'"');
-        }
-
-        return is_bool($result) ? null : $result;
-    }
-
-    /**
      * @inheritdoc
      */
     protected function getOptions(): array

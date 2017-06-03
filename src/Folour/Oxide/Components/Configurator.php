@@ -8,7 +8,7 @@
 namespace Folour\Oxide\Components;
 
 /**
- * Abstract configuration class for Oxide client
+ * Abstract configuration class for Oxide http client
  *
  * @package Folour\Oxide
  */
