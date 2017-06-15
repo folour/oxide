@@ -29,6 +29,7 @@ class Oxide extends Configurator
      * @var array
      */
     private const DEFAULT_OPTIONS = [
+        CURLOPT_FOLLOWLOCATION  => true,
         CURLOPT_SSL_VERIFYHOST  => false,
         CURLOPT_SSL_VERIFYPEER  => false,
         CURLOPT_RETURNTRANSFER  => true,
