@@ -42,7 +42,7 @@ class Response implements ResponseInterface
      */
     public function headers(): array
     {
-        return$this->headers;
+        return $this->headers;
     }
 
     /**
@@ -92,14 +92,26 @@ class Response implements ResponseInterface
      */
     protected function parseHeaders(string $response, array $info): array
     {
-        $raw_headers = substr($response, 0, $info['header_size']);
+        $raw_headers = trim(substr($response, 0, $info['header_size']));
+
+        //If follow locations enabled, headers of all redirects is returned.
+        //But we need headers of last request only.
+        if(strstr($raw_headers, "\r\n\r\n")) {
+            $ex = explode("\r\n\r\n", $raw_headers);
+            $raw_headers = end($ex);
+        }
+
         $ex_headers = explode("\r\n", trim($raw_headers));
         $headers = [];
 
-        foreach(array_slice($ex_headers, 1) as $header_line) {
-            [$header_key, $header_value] = explode(': ', $header_line);
+        foreach ($ex_headers as $header_line) {
+            if(strstr($header_line, ': ')) {
+                [$header_key, $header_value] = explode(': ', $header_line);
 
-            $headers[$header_key] = $header_value;
+                $headers[$header_key] = $header_value;
+            } else {
+                $headers[] = $header_line;
+            }
         }
 
         return $headers;
