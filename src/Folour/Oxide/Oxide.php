@@ -7,7 +7,6 @@
 
 namespace Folour\Oxide;
 
-use Folour\Oxide\Exceptions\Exception;
 use Folour\Oxide\Components\Configurator;
 use Folour\Oxide\Interfaces\ResponseInterface;
 use Folour\Oxide\Components\Request\GetRequest;
@@ -59,7 +58,7 @@ class Oxide extends Configurator
      * @param array     $request_data
      * @return ResponseInterface
      */
-    public function head(string $url, array $request_data): ResponseInterface
+    public function head(string $url, array $request_data = null): ResponseInterface
     {
         $request = new HeadRequest($this->getOptions());
 
