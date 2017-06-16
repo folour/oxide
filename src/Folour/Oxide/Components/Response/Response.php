@@ -92,28 +92,27 @@ class Response implements ResponseInterface
      */
     protected function parseHeaders(string $response, array $info): array
     {
-        $raw_headers = trim(substr($response, 0, $info['header_size']));
+        $ex_headers = explode("\r\n", $this->getLastHeaders($response, $info));
+        $headers    = [];
 
-        //If follow locations enabled, headers of all redirects is returned.
-        //But we need headers of last request only.
-        if(strstr($raw_headers, "\r\n\r\n")) {
-            $ex = explode("\r\n\r\n", $raw_headers);
-            $raw_headers = end($ex);
+        foreach (array_slice($ex_headers, 1) as $k => $line) {
+            [$headers[0][$k], $headers[1][$k]] = explode(': ', $line);
         }
 
-        $ex_headers = explode("\r\n", trim($raw_headers));
-        $headers = [];
+        return array_combine($headers[0], $headers[1]);
+    }
 
-        foreach ($ex_headers as $header_line) {
-            if(strstr($header_line, ': ')) {
-                [$header_key, $header_value] = explode(': ', $header_line);
 
-                $headers[$header_key] = $header_value;
-            } else {
-                $headers[] = $header_line;
-            }
-        }
+    /**
+     * @param string $response
+     * @param array $info
+     * @return string
+     */
+    protected function getLastHeaders(string $response, array $info): string
+    {
+        $raw_headers    = trim(substr($response, 0, $info['header_size']));
+        $parts          = explode("\r\n\r\n", $raw_headers);
 
-        return $headers;
+        return trim(end($parts));
     }
 }
