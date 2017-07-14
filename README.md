@@ -10,7 +10,7 @@ Oxide requires PHP 7.1 and php-curl extension
 
 ### Installation
 ```
-    composer require folour/oxide 'v1.0.0-beta'
+    composer require folour/oxide
 ```
 
 ### Basic usage
